@@ -1,0 +1,8 @@
+FROM aberkow/node-8
+
+COPY express /project
+
+RUN npm set progress=false \
+  && npm install
+
+ENTRYPOINT ["npm", "run", "start"]
