@@ -1,0 +1,1 @@
+A shell for a very basic nginx server. documents are served from `/var/www/public_html`.
