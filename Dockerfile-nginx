@@ -1,9 +1,22 @@
-FROM nginx:1.15.3
+FROM nginx:1.15.4-alpine
 
-RUN mkdir /var/www 
+RUN adduser -D -g 'www' www \
+  && mkdir /var/www/ \
+  && chown -R www:www /var/www \
+  && apk update \
+  && apk add php7 \
+  php7-fpm php7-mcrypt \
+  php7-soap php7-openssl \
+  php7-gmp php7-pdo_odbc \
+  php7-json php7-dom \
+  php7-pdo php7-zip \
+  openrc
 
-COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
-
+# COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx/php-fpm.conf /etc/php7/php-fpm.d/www.conf
 COPY nginx/index.html /var/www/public_html/index.html
+COPY nginx/foo.php /var/www/public_html/foo.php
+
+# CMD ["rc-service", "nginx", "start"]
 
 EXPOSE 80 443
