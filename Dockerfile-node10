@@ -1,4 +1,4 @@
-FROM node:8.10.0-alpine
+FROM node:10.15.3-alpine
 
 LABEL "maintainer": "adam@adamjberkowitz.com" \
       "name": "Adam Berkowitz" \

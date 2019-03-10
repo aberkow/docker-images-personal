@@ -1,4 +1,4 @@
-FROM aberkow/node-8
+FROM aberkow/node-8:1.1.0
 
 COPY express /project
 
